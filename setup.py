@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='test',
+setup(name='testingGithubActionsForPip',
       version='0.0',
       description='test',
       packages=['action'],
