@@ -1,0 +1,28 @@
+name: Publish Python PIP Package on pypi and create github release
+
+on:
+  push:
+#    tags:
+#      - '*.*.*'
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{Okekv}}
+        TWINE_PASSWORD: ${{BNM8kKMaUAaYctA}}
+      run: |
+        python setup.py sdist bdist_wheel
+        python3 -m twine upload --repository testpypi dist/*
