@@ -1,4 +1,4 @@
-name: Publish Python PIP Package on pypi and create github release
+name: Publish Python PIP Package on testpypi
 
 on:
   push:
@@ -24,6 +24,7 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
+        cd ..
         cd ..
         python setup.py sdist bdist_wheel
         python3 -m twine upload --repository testpypi dist/*
